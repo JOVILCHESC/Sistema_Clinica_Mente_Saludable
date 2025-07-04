@@ -52,6 +52,7 @@
 
 
 import express from 'express';
+import { downloadNote } from '../controllers/notesController.js';
 import { verifyToken } from '../middleware/verifyToken.js';
 import { createNote, getNotes } from '../controllers/notesController.js';
 
@@ -59,5 +60,5 @@ const router = express.Router();
 
 router.get('/', verifyToken, getNotes);
 router.post('/', verifyToken, createNote);
-
+router.get('/download/:id', verifyToken, downloadNote);
 export default router;
